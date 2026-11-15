@@ -1,43 +1,320 @@
 <!DOCTYPE html>
 <html lang="en-CA">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shirina Canada | Mochigang Forums</title>
-  <style>
-    body {
-      margin: 0;
-      background: #210917;
-      color: #fff1db;
-      font-family: Verdana, Arial, sans-serif;
-      text-align: center;
-    }
-    header { background: #4b0018; padding: 35px 15px; border-bottom: 3px solid #ff5f82; }
-    h1 { margin: 0; color: #fff1db; }
-    main { max-width: 850px; margin: 35px auto; padding: 15px; }
-    .forum { background: #361322; border: 1px solid #ff5f82; margin: 12px 0; padding: 20px; text-align: left; }
-    .forum strong { color: #ff9db5; }
-    footer { padding: 25px; color: #c9a5b1; font-size: 12px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#430019">
+<meta name="description" content="Shirina Canada connects fans across Canada and around the world through music, performances, and community discussions.">
+<title>Shirina Canada | Global Fan Community</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/shirina-32.png">
+<link rel="apple-touch-icon" href="/shirina-180.png">
+<style>
+:root {
+  color-scheme: dark;
+  --bg:#210917;
+  --dark:#430019;
+  --panel:#361322;
+  --pink:#ff7097;
+  --light:#fff1db;
+  --muted:#dcc3cd;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--light);
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  line-height:1.6;
+}
+a {color:inherit}
+a:focus-visible {outline:3px solid #fff;outline-offset:4px}
+header {
+  background:radial-gradient(ellipse at top,#64132f 0%,#430019 75%);
+  text-align:center;
+  padding:40px 18px 46px;
+  border-bottom:3px solid var(--pink);
+}
+.logo {
+  display:block;
+  width:min(270px,75vw);
+  height:auto;
+  margin:0 auto 24px;
+}
+header h1 {
+  font-size:clamp(1.7rem,5vw,2.7rem);
+  line-height:1.2;
+  margin:0 auto 15px;
+  max-width:700px;
+}
+header p {
+  max-width:650px;
+  margin:0 auto;
+  color:#fbe0e8;
+  font-size:1.03rem;
+}
+main {max-width:980px;margin:42px auto;padding:0 20px}
+.intro {text-align:center;margin-bottom:35px}
+.intro h2 {font-size:1.5rem;margin:0 0 8px}
+.intro p {color:var(--muted);margin:0}
+.community-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.forum {
+  background:var(--panel);
+  border:1px solid #854059;
+  border-radius:14px;
+  padding:23px;
+}
+.forum h3 {margin:0 0 9px;font-size:1.12rem;color:#ffadc4}
+.forum p {margin:0;color:#e4cbd4;font-size:.95rem}
+.forum .tag {
+  display:inline-block;
+  color:#ffd4e0;
+  font-size:.76rem;
+  font-weight:700;
+  margin-bottom:12px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.announcements {
+  grid-column:1/-1;
+  background:linear-gradient(135deg,#52102b,#32101f);
+  border:2px solid var(--pink);
+}
+.announcements h3 {color:#ffe0e9}
+.announcement-list {margin-top:15px}
+.announcement-item {
+  border-top:1px solid #87516a;
+  padding:13px 0;
+}
+.announcement-item strong {display:block;color:#fff1db}
+.announcement-item time {font-size:.78rem;color:#dcb9c5}
+.announcement-item p {margin:5px 0;white-space:pre-wrap}
+footer {
+  text-align:center;
+  margin-top:45px;
+  padding:28px 15px;
+  border-top:1px solid #74384c;
+  color:var(--muted);
+  font-size:.85rem;
+}
+footer a {color:#ffadc4;text-underline-offset:3px}
+@media(max-width:650px) {
+  .community-grid {grid-template-columns:1fr}
+  header {padding:28px 15px 35px}
+  main {margin-top:30px}
+  .forum {padding:20px}
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {animation:none!important;transition:none!important}
+}
 
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/shirina-32.png">
-  <link rel="apple-touch-icon" href="/shirina-180.png">
+.spotify-section {
+  max-width: 980px;
+  margin: 30px auto 0;
+  padding: 0 20px;
+}
+
+.forum-link {
+  display:inline-block;
+  margin-top:18px;
+  color:#ffadc4;
+  font-weight:600;
+  text-underline-offset:4px;
+}
+.forum-link:hover {color:#fff1db}
+#forum-detail {min-height:240px}
+.development-note {
+  margin-top:24px!important;
+  color:#dcc3cd;
+  font-size:.9rem;
+}
+[hidden] {display:none!important}
+</style>
 </head>
 <body>
-  <header>
-<img src="/shirina-logo.png" alt="Shirina Canada official logo" style="display:block;width:min(260px,75vw);height:auto;margin:0 auto 15px;">
-    <h1>🐼🇨🇦 SHIRINA CANADA 🐼</h1>
-    <p>The Official Canadian Fan Community • Est. 2026</p>
-  </header>
-  <main>
-    <h2>🐼 Welcome to the Mochigang Forums! 🐼</h2>
-    <p>Celebrating Shirina's covers of Canadian music.</p>
-    <div class="forum"><strong>🎵 🐼🎵 Canadian Cover Discussions</strong><p>Explore Shirina's performances and Canadian songs.</p></div>
-    <div class="forum"><strong>🍁 🐼🍁 Provincial & City Forums</strong><p>Connect with fans across Canada.</p></div>
-    <div class="forum"><strong>💬 🐼💬 Fan Lounge</strong><p>Meet the community and start conversations.</p></div>
-    <div class="forum"><strong>📨 🐼📨 Submit a Cover</strong><p>Mochigang-curated performances coming soon.</p></div>
-  </main>
-  <footer>🐼 SHIRINA.CA • POWERED BY MOCHIGANG • SECURITY DEVELOPMENT BY APESOFT CANADA 🛡️</footer>
+<header>
+  <img class="logo" src="/shirina-logo.png"
+       alt="Shirina Canada panda mascot wearing pink headphones beside a tulip"
+       width="1254" height="1254">
+  <h1>A Home for Shirina's Fans</h1>
+  <p>A fan community dedicated to sharing Shirina's music, connecting supporters worldwide, and growing her audience in Canada.</p>
+</header>
+  <section class="spotify-section" id="persistent-spotify-player" aria-label="Listen to Shirina on Spotify">
+    <iframe
+      title="Shirina Spotify playlist"
+      style="border:0;border-radius:12px;display:block;width:100%;"
+      src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4l4oNn?utm_source=generator&amp;theme=0&amp;si=750b7e6c35a34ee1"
+      width="100%"
+      height="152"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    <p style="text-align:center;font-size:.85rem;margin:12px 0 0;">
+      <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO4l4oNn"
+         target="_blank" rel="noopener noreferrer">
+        Listen on Spotify
+      </a>
+    </p>
+  </section>
+<main id="forum-page">
+  <section class="intro" aria-labelledby="welcome">
+    <h2 id="welcome">Welcome to the Community 🐼</h2>
+
+  </section>
+
+
+
+
+  <div class="community-grid" id="forum-home">
+    <section class="forum announcements" aria-labelledby="announcements-title">
+      <span class="tag">📢 Community updates</span>
+      <h3 id="announcements-title">Official Announcements</h3>
+      <p>News, releases, upcoming events, and important community updates.</p>
+      <p><small>Only authorized administrators can publish announcements.</small></p>
+      <div id="announcement-list" class="announcement-list" aria-live="polite">
+        <p>Loading announcements...</p>
+      </div>
+    </section>
+
+    <section class="forum">
+      <span class="tag">🍁 Canada</span>
+      <h3>Canadian Fan Communities</h3>
+      <p>Connect by province and city, meet other Canadian fans,
+      and help grow Shirina's audience across the country.</p>
+
+<a class="forum-link" href="#/canada">Open section →</a>
+</section>
+
+    <section class="forum">
+      <span class="tag">🌎 Worldwide</span>
+      <h3>Global Fan Forum</h3>
+      <p>Fans from every country are welcome to celebrate Shirina's
+      music, share experiences, and connect across borders.</p>
+
+<a class="forum-link" href="#/global">Open section →</a>
+</section>
+
+    <section class="forum">
+      <span class="tag">🎵 Music</span>
+      <h3>Music &amp; Performances</h3>
+      <p>Discuss original songs, covers, performances,
+      new releases, and favourite musical moments.</p>
+
+<a class="forum-link" href="#/music">Open section →</a>
+</section>
+
+    <section class="forum">
+      <span class="tag">💗 Community</span>
+      <h3>Fan Lounge</h3>
+      <p>Introduce yourself, meet fellow fans,
+      share fan creations, and enjoy everyday conversations.</p>
+
+<a class="forum-link" href="#/lounge">Open section →</a>
+</section>
+
+    <section class="forum">
+      <span class="tag">📨 Submissions</span>
+      <h3>Submit a Performance</h3>
+      <p>Suggest music videos and performances for administrator
+      review before they're featured in the community.</p>
+
+<a class="forum-link" href="#/submissions">Open section →</a>
+</section>
+  </div>
+
+  <section id="forum-detail" class="forum" hidden tabindex="-1">
+    <a class="forum-link" href="#/">← Back to forums</a>
+    <h2 id="detail-title"></h2>
+    <p id="detail-description"></p>
+    <p class="development-note">
+      Discussions and posting features are being developed.
+    </p>
+  </section>
+</main>
+
+<footer>
+  © 2026 Shirina Canada | Powered and developed by
+  <a href="https://apesoft.ca/" target="_blank" rel="noopener noreferrer">Apesoft Canada</a>
+</footer>
+
+<script>
+(async () => {
+  const list = document.getElementById("announcement-list");
+  try {
+    const response = await fetch("/api/announcements", {
+      credentials: "same-origin",
+      cache: "no-store"
+    });
+    if (!response.ok) throw new Error("Announcements unavailable");
+    const data = await response.json();
+    list.replaceChildren();
+    if (!Array.isArray(data.announcements) || !data.announcements.length) {
+      const p = document.createElement("p");
+      p.textContent = "No announcements published yet. Check back for updates.";
+      list.append(p);
+      return;
+    }
+    for (const item of data.announcements) {
+      const article = document.createElement("article");
+      article.className = "announcement-item";
+      const title = document.createElement("strong");
+      title.textContent = item.title;
+      const date = document.createElement("time");
+      date.textContent = item.created_at;
+      const body = document.createElement("p");
+      body.textContent = item.body;
+      article.append(title,date,body);
+      list.append(article);
+    }
+  } catch {
+    list.textContent = "Announcements will appear here soon.";
+  }
+})();
+</script>
+
+<script>
+(() => {
+  const views = {
+    canada: ["Canadian Fan Communities",
+             "Find discussions organized by Canadian province and city."],
+    global: ["Global Fan Forum",
+             "A discussion space for Shirina's fans around the world."],
+    music: ["Music & Performances",
+            "Discuss Shirina's songs, covers, releases, and performances."],
+    lounge: ["Fan Lounge",
+             "Introductions, fan creations, and general discussions."],
+    submissions: ["Submit a Performance",
+                  "Performance links require administrator approval."]
+  };
+
+  const home = document.getElementById("forum-home");
+  const detail = document.getElementById("forum-detail");
+
+  function navigate() {
+    const slug = location.hash.replace(/^#\/?/, "");
+    const view = views[slug];
+
+    if (view) {
+      home.hidden = true;
+      detail.hidden = false;
+      document.getElementById("detail-title").textContent = view[0];
+      document.getElementById("detail-description").textContent = view[1];
+      document.title = view[0] + " | Shirina Canada";
+    } else {
+      home.hidden = false;
+      detail.hidden = true;
+      document.title = "Shirina Canada | Global Fan Community";
+    }
+  }
+
+  window.addEventListener("hashchange", navigate);
+  navigate();
+})();
+</script>
+
 </body>
 </html>
