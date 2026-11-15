@@ -1,0 +1,10 @@
+name = "shirina-canada"
+compatibility_date = "2026-11-11"
+
+[assets]
+directory = "./public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "shirina-canada-forum"
+database_id = "897b6fc5-ac4d-4c7d-ab15-514e0266995d"
