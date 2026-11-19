@@ -1,3 +1,10 @@
+import { handleSweetiesAPI } from "./sweeties-api.js";
+import { sendSweetiesEmail } from "./sweeties-resend.js";
+import { getSweetiesSession } from "./sweeties-session.js";
+import { registrationComplete } from "./sweeties-auth.js";
+import { handleForum } from "./forum.js";
+import { handleForumPost } from "./forum-post.js";
+
 
 const json = (data, status = 200) =>
   new Response(JSON.stringify(data), {
@@ -67,6 +74,34 @@ async function verifiedAccessEmail(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // Private Mochigang discussion and comment API.
+    // Independent Sweeties authentication and registration.
+    if (url.pathname.startsWith("/api/sweeties/")) {
+      return handleSweetiesAPI(
+        request,
+        env,
+        (email, code) => sendSweetiesEmail(env, email, code)
+      );
+    }
+
+    if (url.pathname.startsWith("/api/forum/")) {
+      // Permanent Sweeties authentication, independent of Cloudflare Access.
+      const session = await getSweetiesSession(request, env);
+      if (!session)
+        return json({ error: "Sweeties login required" }, 401);
+
+      if (!registrationComplete(session))
+        return json({ error: "Sweeties registration required" }, 403);
+
+      if (request.method === "GET")
+        return handleForum(request, env);
+
+      if (request.method === "POST")
+        return handleForumPost(request, env, session);
+
+      return json({ error: "Method not allowed" }, 405);
+    }
 
     if (url.pathname !== "/api/announcements") {
       if (url.pathname.startsWith("/api/"))

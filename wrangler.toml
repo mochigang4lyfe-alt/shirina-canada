@@ -11,3 +11,7 @@ run_worker_first = ["/api/*"]
 binding = "DB"
 database_name = "shirina-canada-forum"
 database_id = "897b6fc5-ac4d-4c7d-ab15-514e0266995d"
+
+[vars]
+ACCESS_TEAM_DOMAIN = "https://billowing-mountain-c5cd.cloudflareaccess.com"
+ACCESS_AUD = "8330b8382c5841f5dcf23b2f7ba73c9f31e405fc05c8cf3a7bc8bc2aec580781"

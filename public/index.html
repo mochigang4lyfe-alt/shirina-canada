@@ -227,6 +227,78 @@ footer a {color:#ffadc4;text-underline-offset:3px}
   </div>
 
   <section id="forum-detail" class="forum" hidden tabindex="-1">
+
+  <div id="mochi-discussions" hidden>
+    <style>
+      #mochi-discussions{margin-top:22px}
+      #mochi-discussions .mochi-box{
+        padding:16px;margin:14px 0;
+        border:1px solid #d78ca5;
+        border-radius:8px;
+        background:rgba(120,35,65,.12)
+      }
+      #mochi-discussions input,
+      #mochi-discussions textarea{
+        display:block;width:100%;box-sizing:border-box;
+        padding:11px;margin:8px 0 12px;
+        border:1px solid #bb7994;border-radius:5px;
+        background:#fffafc;color:#321728;
+        font:inherit
+      }
+      #mochi-discussions button{
+        padding:10px 15px;margin:5px 5px 5px 0;
+        border:0;border-radius:5px;
+        background:#8c294d;color:white;
+        font:inherit;font-weight:bold;cursor:pointer
+      }
+      #mochi-discussions button:disabled{opacity:.55;cursor:wait}
+      #mochi-discussions .mochi-thread{
+        display:block;width:100%;text-align:left;
+        margin:9px 0;padding:13px;
+        border:1px solid #b98198;border-radius:5px
+      }
+      #mochi-discussions .mochi-meta{
+        font-size:12px;opacity:.8;margin:5px 0
+      }
+      #mochi-discussions .mochi-message{
+        white-space:pre-wrap;overflow-wrap:anywhere
+      }
+      #mochi-status{min-height:22px}
+    </style>
+
+    <div id="mochi-list-view">
+      <h3>🐼 Community Discussions</h3>
+      <p id="mochi-status" role="status" aria-live="polite"></p>
+      <div id="mochi-thread-list"></div>
+
+      <form id="mochi-new-thread" class="mochi-box">
+        <h3>🐼 Start a Discussion</h3>
+        <label for="mochi-title">Discussion title</label>
+        <input id="mochi-title" maxlength="160" required>
+        <label for="mochi-body">Your message</label>
+        <textarea id="mochi-body" rows="5"
+          maxlength="5000" required></textarea>
+        <button type="submit">🐼 Post Discussion</button>
+      </form>
+    </div>
+
+    <div id="mochi-thread-view" hidden>
+      <button id="mochi-back" type="button">← All Discussions</button>
+      <h3 id="mochi-open-title"></h3>
+      <div id="mochi-open-body" class="mochi-message"></div>
+      <h3>🐼 Replies</h3>
+      <div id="mochi-reply-list"></div>
+
+      <form id="mochi-new-reply" class="mochi-box">
+        <label for="mochi-reply-body">Write your comment</label>
+        <textarea id="mochi-reply-body" rows="4"
+          maxlength="5000" required></textarea>
+        <button type="submit">💬 Post Comment</button>
+      </form>
+      <p id="mochi-reply-status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+
     <a class="forum-link" href="#/">← Back to forums</a>
     <h2 id="detail-title"></h2>
     <p id="detail-description"></p>
@@ -316,5 +388,85 @@ footer a {color:#ffadc4;text-underline-offset:3px}
 })();
 </script>
 
+<script src="/forum-comments.js" defer></script>
+
+<div id="sweeties-gate" hidden role="dialog" aria-modal="true"
+     aria-labelledby="sweeties-heading">
+  <style>
+    #sweeties-gate {
+      position:fixed;inset:0;z-index:99999;
+      background:rgba(25,6,20,.97);
+      overflow:auto;padding:35px 14px;
+    }
+    #sweeties-gate[hidden]{display:none!important}
+    .sweeties-panel {
+      max-width:470px;margin:20px auto;padding:26px;
+      background:#fff6fa;color:#38182a;
+      border:3px solid #e797b6;border-radius:12px;
+      box-shadow:0 12px 45px #0006;
+      font:15px Verdana,Arial,sans-serif;
+    }
+    .sweeties-panel h2{text-align:center;color:#852b55}
+    .sweeties-panel input {
+      display:block;width:100%;box-sizing:border-box;
+      margin:8px 0 17px;padding:12px;
+      border:1px solid #aa7391;border-radius:5px;
+      background:white;color:#301825;font:inherit;
+    }
+    .sweeties-panel button {
+      width:100%;padding:13px;border:0;border-radius:6px;
+      background:#902d58;color:white;font:inherit;
+      font-weight:bold;cursor:pointer;
+    }
+    .sweeties-panel button:disabled{opacity:.55}
+    .sweeties-panel label{display:block;font-weight:bold}
+    .sweeties-panel .age-label {
+      display:flex;align-items:flex-start;gap:10px;
+      margin:14px 0;font-weight:normal;
+    }
+    .sweeties-panel .age-label input {
+      width:auto;margin:3px 0;
+    }
+    .sweeties-panel [hidden]{display:none!important}
+    #sweeties-message{min-height:22px;margin-top:15px}
+  </style>
+
+  <div class="sweeties-panel">
+    <h2 id="sweeties-heading">🐼 Welcome, Sweetie! 💗</h2>
+    <p>Join Shirina Canada's official fan community.</p>
+
+    <form id="sweeties-email-step">
+      <label for="sweeties-email">Your email address</label>
+      <input id="sweeties-email" type="email" autocomplete="email"
+             maxlength="254" required>
+      <button type="submit">✉️ Send Verification Code</button>
+    </form>
+
+    <form id="sweeties-code-step" hidden>
+      <label for="sweeties-code">Six-digit email code</label>
+      <input id="sweeties-code" inputmode="numeric"
+             pattern="[0-9]{6}" maxlength="6"
+             autocomplete="one-time-code" required>
+      <button type="submit">🐼 Verify Email</button>
+    </form>
+
+    <form id="sweeties-profile-step" hidden>
+      <label for="sweeties-username">Sweeties Username</label>
+      <input id="sweeties-username" minlength="3" maxlength="24"
+             pattern="[A-Za-z0-9_]{3,24}"
+             autocomplete="username" required>
+      <p>3–24 characters: letters, numbers and underscores.</p>
+      <label class="age-label">
+        <input id="sweeties-age" type="checkbox" required>
+        <span>I confirm that I am at least 13 years old.</span>
+      </label>
+      <button type="submit">💗 Complete Sweeties Registration</button>
+    </form>
+
+    <p id="sweeties-message" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
+<script src="/sweeties-registration.js" defer></script>
 </body>
 </html>
