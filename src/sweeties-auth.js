@@ -50,7 +50,7 @@ export async function hashEmailCode(email, code, secret) {
 
 export function validSweetiesUsername(value) {
   return typeof value === "string" &&
-    /^[A-Za-z0-9_]{3,24}$/.test(value);
+    /^[A-Za-z0-9_-]{3,24}$/.test(value);
 }
 
 export function registrationComplete(member) {

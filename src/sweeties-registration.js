@@ -23,7 +23,7 @@ export async function registerSweetie(env, session, input) {
     return {
       ok: false,
       status: 400,
-      error: "Username must be 3-24 letters, numbers or underscores"
+      error: "Username must be 3-24 characters: letters, numbers, underscores or hyphens"
     };
   }
 

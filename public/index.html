@@ -453,9 +453,9 @@ footer a {color:#ffadc4;text-underline-offset:3px}
     <form id="sweeties-profile-step" hidden>
       <label for="sweeties-username">Sweeties Username</label>
       <input id="sweeties-username" minlength="3" maxlength="24"
-             pattern="[A-Za-z0-9_]{3,24}"
+             pattern="[A-Za-z0-9_-]{3,24}"
              autocomplete="username" required>
-      <p>3–24 characters: letters, numbers and underscores.</p>
+      <p>3–24 characters: letters, numbers, underscores or hyphens.</p>
       <label class="age-label">
         <input id="sweeties-age" type="checkbox" required>
         <span>I confirm that I am at least 13 years old.</span>
